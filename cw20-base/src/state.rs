@@ -2,7 +2,7 @@ use cosmwasm_schema::cw_serde;
 use cosmwasm_std::{Addr, Uint128};
 use cw_storage_plus::{Item, Map};
 
-use cw20::{AllowanceResponse, Logo, MarketingInfoResponse};
+use cw20::AllowanceResponse;
 
 #[cw_serde]
 pub struct TokenInfo {
@@ -27,8 +27,6 @@ impl TokenInfo {
 }
 
 pub const TOKEN_INFO: Item<TokenInfo> = Item::new("token_info");
-pub const MARKETING_INFO: Item<MarketingInfoResponse> = Item::new("marketing_info");
-pub const LOGO: Item<Logo> = Item::new("logo");
 pub const BALANCES: Map<&Addr, Uint128> = Map::new("balance");
 pub const ALLOWANCES: Map<(&Addr, &Addr), AllowanceResponse> = Map::new("allowance");
 // TODO: After https://github.com/CosmWasm/cw-plus/issues/670 is implemented, replace this with a `MultiIndex` over `ALLOWANCES`

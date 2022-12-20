@@ -1,0 +1,12 @@
+/Users/meomeocoj/my-cw-20/cw20-base/target/debug/deps/signature-9951e2d8b1550ce1.rmeta: /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/lib.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/hazmat.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/error.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/keypair.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signature.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signer.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/verifier.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/../README.md
+
+/Users/meomeocoj/my-cw-20/cw20-base/target/debug/deps/signature-9951e2d8b1550ce1.d: /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/lib.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/hazmat.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/error.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/keypair.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signature.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signer.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/verifier.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/../README.md
+
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/lib.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/hazmat.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/error.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/keypair.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signature.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/signer.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/verifier.rs:
+/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/signature-1.6.4/src/../README.md:

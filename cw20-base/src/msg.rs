@@ -1,18 +1,8 @@
 use cosmwasm_schema::{cw_serde, QueryResponses};
-use cosmwasm_std::{StdError, StdResult, Uint128};
-use cw20::{Cw20Coin, Logo, MinterResponse};
+use cosmwasm_std::{Binary, StdError, StdResult, Uint128};
+use cw20::{Cw20Coin, Expiration, MinterResponse};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-
-pub use cw20::Cw20ExecuteMsg as ExecuteMsg;
-
-#[cw_serde]
-pub struct InstantiateMarketingInfo {
-    pub project: Option<String>,
-    pub description: Option<String>,
-    pub marketing: Option<String>,
-    pub logo: Option<Logo>,
-}
 
 #[cw_serde]
 #[cfg_attr(test, derive(Default))]
@@ -22,7 +12,6 @@ pub struct InstantiateMsg {
     pub decimals: u8,
     pub initial_balances: Vec<Cw20Coin>,
     pub mint: Option<MinterResponse>,
-    pub marketing: Option<InstantiateMarketingInfo>,
 }
 
 impl InstantiateMsg {
@@ -71,6 +60,61 @@ impl InstantiateMsg {
 }
 
 #[cw_serde]
+pub enum ExecuteMsg {
+    /// Transfer is a base message to move tokens to another account without triggering actions
+    Transfer { recipient: String, amount: Uint128 },
+    /// Burn is a base message to destroy tokens forever
+    Burn { amount: Uint128 },
+    /// Send is a base message to transfer tokens to a contract and trigger an action
+    /// on the receiving contract.
+    Send {
+        contract: String,
+        amount: Uint128,
+        msg: Binary,
+    },
+    /// Only with "approval" extension. Allows spender to access an additional amount tokens
+    /// from the owner's (env.sender) account. If expires is Some(), overwrites current allowance
+    /// expiration with this one.
+    IncreaseAllowance {
+        spender: String,
+        amount: Uint128,
+        expires: Option<Expiration>,
+    },
+    /// Only with "approval" extension. Lowers the spender's access of tokens
+    /// from the owner's (env.sender) account by amount. If expires is Some(), overwrites current
+    /// allowance expiration with this one.
+    DecreaseAllowance {
+        spender: String,
+        amount: Uint128,
+        expires: Option<Expiration>,
+    },
+    /// Only with "approval" extension. Transfers amount tokens from owner -> recipient
+    /// if `env.sender` has sufficient pre-approval.
+    TransferFrom {
+        owner: String,
+        recipient: String,
+        amount: Uint128,
+    },
+    /// Only with "approval" extension. Sends amount tokens from owner -> contract
+    /// if `env.sender` has sufficient pre-approval.
+    SendFrom {
+        owner: String,
+        contract: String,
+        amount: Uint128,
+        msg: Binary,
+    },
+    /// Only with "approval" extension. Destroys tokens forever
+    BurnFrom { owner: String, amount: Uint128 },
+    /// Only with the "mintable" extension. If authorized, creates amount new tokens
+    /// and adds to the recipient balance.
+    Mint { recipient: String, amount: Uint128 },
+    /// Only with the "mintable" extension. The current minter may set
+    /// a new minter. Setting the minter to None will remove the
+    /// token's minter forever.
+    UpdateMinter { new_minter: Option<String> },
+}
+
+#[cw_serde]
 #[derive(QueryResponses)]
 pub enum QueryMsg {
     /// Returns the current balance of the given address, 0 if unset.
@@ -110,16 +154,6 @@ pub enum QueryMsg {
         start_after: Option<String>,
         limit: Option<u32>,
     },
-    /// Only with "marketing" extension
-    /// Returns more metadata on the contract to display in the client:
-    /// - description, logo, project url, etc.
-    #[returns(cw20::MarketingInfoResponse)]
-    MarketingInfo {},
-    /// Only with "marketing" extension
-    /// Downloads the embedded logo data (if stored on chain). Errors if no logo data is stored for this
-    /// contract.
-    #[returns(cw20::DownloadLogoResponse)]
-    DownloadLogo {},
 }
 
 #[derive(Serialize, Deserialize, JsonSchema)]
