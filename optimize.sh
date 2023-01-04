@@ -1,27 +1,25 @@
 # !usr/bin/env bash
 SOURCE=$(pwd)
-OPTIMIZE_PATH="$(pwd)/optimize"
+ARTIFACTS="$(pwd)/artifacts"
 TARGET_PATH="$(pwd)/target/wasm32-unknown-unknown/release" 
 
+echo "ARTIFACTS: $OPTIMIZE_PATH"
+echo "TARGET_PATH: $TARGET_PATH"
 # create wasm file
 if [[ ! -d $TARGET_PATH ]]; then 
   (RUSTFLAGS='-C link-arg=-s' cargo wasm)
 fi
 
 #Create optimize folder 
-if [[ ! -d $OPTIMIZE_PATH ]]; then 
-  (mkdir -p $OPTIMIZE_PATH)
+if [[ ! -d $ARTIFACTS ]]; then 
+  echo "Create folder artifacts"
+  (mkdir -p $ARTIFACTS)
 fi
 
 target_wasm=$(ls -f $TARGET_PATH | grep .wasm)
 
 for i in $target_wasm; do 
-  (wasm-opt "$TARGET_PATH/$i" -Os -o "$OPTIMIZE_PATH/$i")
+  echo "Optimizing $i..."
+  (wasm-opt "$TARGET_PATH/$i" -Os -o "$ARTIFACTS/$i")
 done
 
-
-echo "pwd: `pwd`"
-echo "SOURCE: $SOURCE" 
-echo "OPTIMIZE_PATH: $OPTIMIZE_PATH"
-echo "TARGET_PATH: $TARGET_PATH"
-echo "target_wasm: $target_wasm"
