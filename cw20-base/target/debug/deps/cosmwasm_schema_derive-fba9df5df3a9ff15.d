@@ -1,9 +1,0 @@
-/Users/meomeocoj/my-cw-20/cw20-base/target/debug/deps/libcosmwasm_schema_derive-fba9df5df3a9ff15.dylib: /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/lib.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/cw_serde.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/generate_api.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses/context.rs
-
-/Users/meomeocoj/my-cw-20/cw20-base/target/debug/deps/cosmwasm_schema_derive-fba9df5df3a9ff15.d: /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/lib.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/cw_serde.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/generate_api.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses.rs /Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses/context.rs
-
-/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/lib.rs:
-/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/cw_serde.rs:
-/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/generate_api.rs:
-/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses.rs:
-/Users/meomeocoj/.cargo/registry/src/github.com-1ecc6299db9ec823/cosmwasm-schema-derive-1.1.9/src/query_responses/context.rs:

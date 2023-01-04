@@ -18,12 +18,10 @@ async function main() {
   const [address] = await wallet.getAccounts()
   const wasmPath = path.resolve(
     __dirname,
-    "../cw20-base/target/wasm32-unknown-unknown/release/cw20_base.wasm"
+    "../cw20-base/artifacts/cw20_base-aarch64.wasm"
   )
   // console.log("==> address", address)
-
   const wasm = fs.readFileSync(wasmPath)
-
   // using
   const client = await SigningCosmWasmClient.connectWithSigner(rpc, wallet, {
     prefix: orainTestnet.prefix,
@@ -49,7 +47,6 @@ async function main() {
     },
   }
 
-  // @ts-ignore
   const contract = await client.instantiate(
     address.address,
     uploadResult.codeId,

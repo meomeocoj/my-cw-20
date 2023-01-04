@@ -16,6 +16,8 @@ type Config = {
   networks: networks
 }
 
+export const contractAddress = "orai1kdh5ej3cth9v46l2jt9had7c4n5p6v54fwx0ll476f3s77ysymnqvmx7vv"
+
 export const config: Config = {
   networks: {
     "oraichain_testnet": {
