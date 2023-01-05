@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "preserveConstEnums": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "lib": [
+      "esnext"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "codegen/**/*"
   ],
   "exclude": [
     "node_modules",
