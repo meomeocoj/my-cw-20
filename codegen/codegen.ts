@@ -1,6 +1,6 @@
-import codegen from "@cosmwasm/ts-codegen"
-import * as fs from "fs"
-import * as path from "path"
+import codegen from '@cosmwasm/ts-codegen'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const OUTPUT_SCHEMA_DIR = '.'
 
@@ -15,9 +15,9 @@ async function getSchemaDir(rootDir: string): Promise<string[][]> {
   const dirEntries = fs.readdirSync(absolutePath)
   dirEntries.forEach((entry) => {
     try {
-      const schemaDir = path.resolve(__dirname, rootDir, entry, "schema")
+      const schemaDir = path.resolve(__dirname, rootDir, entry, 'schema')
       if (fs.existsSync(schemaDir) && fs.lstatSync(schemaDir).isDirectory()) {
-        dirs.push([schemaDir.replaceAll("\\", "/"), entry])
+        dirs.push([schemaDir.replaceAll('\\', '/'), entry])
       }
     } catch (e) {
       console.warn(e)
@@ -28,29 +28,27 @@ async function getSchemaDir(rootDir: string): Promise<string[][]> {
   return dirs
 }
 
-
 async function main() {
-  const contractDir = '../contract'
+  const contractDir = '../contracts'
   const dirs = await getSchemaDir(contractDir)
   const compilanceSpecs: ComplianceSpec[] = dirs.map(([dir, name]) => {
     return {
-      dir, name
+      dir,
+      name,
     }
   })
   codegen({
     contracts: compilanceSpecs,
-    outPath: `./codegen/contract`,
+    outPath: `./artifacts/contracts`,
     options: {
       bundle: {
         bundleFile: 'index.ts',
-        scope: 'contracts'
-      }
-    }
+        scope: 'contracts',
+      },
+    },
   }).then(() => {
     console.log('✨all done')
   })
 }
 
-main().catch(err => console.log(err))
-
-
+main().catch((err) => console.log(err))

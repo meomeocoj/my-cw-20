@@ -32,7 +32,9 @@ impl InstantiateMsg {
             ));
         }
         if self.decimals > 18 {
-            return Err(StdError::generic_err("Decimals must not exceed 18"));
+            return Err(StdError::generic_err(
+                "Decimals must not exceed 18",
+            ));
         }
         Ok(())
     }
@@ -51,7 +53,10 @@ impl InstantiateMsg {
             return false;
         }
         for byte in bytes.iter() {
-            if (*byte != 45) && (*byte < 65 || *byte > 90) && (*byte < 97 || *byte > 122) {
+            if (*byte != 45)
+                && (*byte < 65 || *byte > 90)
+                && (*byte < 97 || *byte > 122)
+            {
                 return false;
             }
         }

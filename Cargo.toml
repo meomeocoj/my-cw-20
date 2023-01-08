@@ -1,8 +1,8 @@
 [workspace]
 
 members = [
-  "contract/cw20-base",
-  "contract/cw20-escrow"
+  "contracts/cw20-base",
+  "contracts/cw20-escrow"
 ]
 
 

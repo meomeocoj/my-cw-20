@@ -2,7 +2,7 @@ import { SigningCosmWasmClient, Secp256k1HdWallet } from "cosmwasm"
 import * as secrets from "../secrets.json"
 import { config } from "../cosmjs.config"
 import { calculateFee, GasPrice } from "@cosmjs/stargate"
-import { InstantiateMsg } from "../codegen/Cw20.types"
+import { InstantiateMsg } from "../artifacts/contracts/Cw20Base.types"
 import * as fs from "fs"
 import * as path from "path"
 
@@ -18,7 +18,7 @@ async function main() {
   const [address] = await wallet.getAccounts()
   const wasmPath = path.resolve(
     __dirname,
-    "../cw20-base/artifacts/cw20_base-aarch64.wasm"
+    "../artifacts/cw20_base-aarch64.wasm"
   )
   // console.log("==> address", address)
   const wasm = fs.readFileSync(wasmPath)
