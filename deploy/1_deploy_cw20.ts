@@ -1,10 +1,10 @@
-import { SigningCosmWasmClient, Secp256k1HdWallet } from "cosmwasm"
-import * as secrets from "../secrets.json"
-import { config } from "../cosmjs.config"
-import { calculateFee, GasPrice } from "@cosmjs/stargate"
-import { InstantiateMsg } from "../artifacts/contracts/Cw20Base.types"
-import * as fs from "fs"
-import * as path from "path"
+import { SigningCosmWasmClient, Secp256k1HdWallet } from 'cosmwasm'
+import * as secrets from '../secrets.json'
+import { config } from '../cosmjs.config'
+import { calculateFee, GasPrice } from '@cosmjs/stargate'
+import { InstantiateMsg } from '../artifacts/contracts/Cw20Base.types'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const rpc = config.networks.oraichain_testnet.rpc
 const mnemonic = secrets.mnemonic
@@ -18,7 +18,7 @@ async function main() {
   const [address] = await wallet.getAccounts()
   const wasmPath = path.resolve(
     __dirname,
-    "../artifacts/cw20_base-aarch64.wasm"
+    '../artifacts/cw20_base-aarch64.wasm'
   )
   // console.log("==> address", address)
   const wasm = fs.readFileSync(wasmPath)
@@ -28,22 +28,22 @@ async function main() {
     gasPrice: GasPrice.fromString(orainTestnet.gasPrice),
   })
   const uploadFee = calculateFee(0, GasPrice.fromString(orainTestnet.gasPrice))
-  console.log("=>uploadFee", uploadFee)
-  const uploadResult = await client.upload(address.address, wasm, "auto")
-  console.log("==>Codeid", uploadResult.codeId)
+  console.log('=>uploadFee', uploadFee)
+  const uploadResult = await client.upload(address.address, wasm, 'auto')
+  console.log('==>Codeid', uploadResult.codeId)
   const initMsg: InstantiateMsg = {
-    name: "MEOMEOCOJN",
-    symbol: "MMC",
+    name: 'MEOMEOCOJN',
+    symbol: 'MMC',
     decimals: 6,
     initial_balances: [
       {
         address: address.address,
-        amount: "100000",
+        amount: '100000',
       },
     ],
     mint: {
       minter: address.address,
-      cap: "90000000",
+      cap: '90000000',
     },
   }
 
@@ -52,10 +52,10 @@ async function main() {
     uploadResult.codeId,
     // @ts-ignore
     initMsg,
-    "MEME",
-    "auto"
+    'MEME',
+    'auto'
   )
-  console.log("contract address: ", contract.contractAddress)
+  console.log('contract address: ', contract.contractAddress)
 }
 
 main().catch((err) => {

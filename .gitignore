@@ -3,6 +3,5 @@ node_modules/
 secrets.*
 optimize/
 target/
-scripts/
 artifacts/
 schema/
