@@ -1,5 +1,4 @@
 #[cfg(not(feature = "library"))]
-
 use cosmwasm_std::entry_point;
 use cosmwasm_std::{
     from_binary, to_binary, Addr, BankMsg, Binary, Deps,
@@ -19,7 +18,6 @@ use crate::{
     state::{
         all_escrow_id, Escrow, GenericBalance, ESCROWS,
     },
-
     ContractError,
 };
 
