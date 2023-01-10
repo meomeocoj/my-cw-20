@@ -1,8 +1,9 @@
+import { EscrowList } from '../components'
 export default function Home() {
   return (
     <>
-      <div className="container">
-        <div className="text-5xl">Hello World</div>
+      <div className='container bg-neutral-content text-black my-5 p-5'>
+        <EscrowList />
       </div>
     </>
   )

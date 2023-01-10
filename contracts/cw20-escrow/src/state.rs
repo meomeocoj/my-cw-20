@@ -34,7 +34,7 @@ impl GenericBalance {
                         None => self.native.push(token),
                     }
                 }
-            }
+            },
             Balance::Cw20(token) => {
                 let index = self
                     .cw20

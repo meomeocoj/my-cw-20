@@ -1,10 +1,4 @@
 const EscrowsPage = () => {
-  return (
-    <div>
-      EscrowsPage
-
-    </div>
-
-  )
+  return <div>EscrowsPage</div>
 }
 export default EscrowsPage
