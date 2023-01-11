@@ -1,7 +1,6 @@
-import { SigningCosmWasmClient } from 'cosmwasm'
+import { SigningCosmWasmClient } from '@cosmjs/cosmwasm-stargate'
 import { DirectSecp256k1HdWallet } from '@cosmjs/proto-signing'
-import { makeCosmoshubPath } from '@cosmjs/stargate'
-import { GasPrice } from '@cosmjs/stargate'
+import { GasPrice, makeCosmoshubPath } from '@cosmjs/stargate'
 import { config } from '../cosmjs.config'
 import * as secrets from '../secrets.json'
 
@@ -25,7 +24,7 @@ export async function setUp() {
   return { signer, cc, wallet }
 }
 
-setUp().catch((err) => {
-  console.log(err)
+setUp().catch((err: any) => {
+  console.error(err)
   process.exit(1)
 })
