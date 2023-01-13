@@ -392,6 +392,7 @@ pub fn execute_update_minter(
         });
 
     config.mint = minter_data;
+    
 
     TOKEN_INFO.save(deps.storage, &config)?;
 
