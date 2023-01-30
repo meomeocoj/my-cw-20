@@ -1,4 +1,4 @@
-import { DetailResponse } from '../../contract/Cw20Escrow.types'
+import { DetailResponse } from '../../contracts/Cw20Escrow.types'
 
 const EscrowDetail = ({ metadata }: { metadata: DetailResponse }) => {
   return (

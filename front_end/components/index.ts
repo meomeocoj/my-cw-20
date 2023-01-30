@@ -1,4 +1,5 @@
 export { default as Header } from './Header/Header'
-export { default as Footer } from './Footer/Footer'
-export { default as EscrowList } from './EscrowList/EscrowList'
-export { default as EscrowDetail } from './EscrowDetail/EscrowDetail'
+// export { default as Footer } from './Footer/Footer'
+export { default as EscrowListItem } from './EscrowListItem/EscrowListItem'
+export { default as EscrowDetailComponent } from './EscrowDetailComponent/EscrowDetailComponent'
+export { default as Modal } from './Modal/Modal'

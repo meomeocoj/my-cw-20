@@ -9,6 +9,9 @@ module.exports = {
       center: true,
     },
     extend: {},
+    container: {
+      center: true,
+    },
   },
   plugins: [require('daisyui')],
   daisyui: {

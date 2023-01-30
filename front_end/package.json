@@ -20,9 +20,11 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swr": "^2.0.0",
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@owallet/types": "^0.0.2",
     "autoprefixer": "^10.4.13",
     "eslint-plugin-tailwindcss": "^3.8.0",
     "postcss": "^8.4.20",

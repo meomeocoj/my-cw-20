@@ -1,37 +1,68 @@
 import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { EscrowDetail as EscrowDetailComponent } from '../../components'
-import { DetailResponse } from '../../contract/Cw20Escrow.types'
-
-const metadata: DetailResponse = {
-  arbiter: 'arbiter',
-  cw20_balance: [{ address: '1', amount: '1' }],
-  cw20_whitelist: ['cw-whitelist'],
-  description: 'description',
-  end_height: 0,
-  id: 'id',
-  native_balance: [{ denom: 'stake', amount: '123' }],
-  recipient: 'receipient',
-  source: 'source',
-  title: 'title',
-}
+import { EscrowDetailComponent } from '../../components'
+import { config } from '../../cosmjs.config'
+import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate'
+import { Cw20EscrowQueryClient } from '../../contracts/Cw20Escrow.client'
+import path from 'path'
+import { promises } from 'fs'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let paths = [{ params: { id: '1' } }, { params: { id: '2' } }]
+  const networkConfig = config.networks[process.env.NETWORK]
+  const chainId = networkConfig.chainId as string
+  const artifactDirectory = path.join(process.cwd(), 'contracts')
+  const fileContent = await promises.readFile(
+    artifactDirectory + '/Cw20Escrow.json',
+    'utf8'
+  )
+  const cw20EscrowJson = JSON.parse(fileContent)
+  const cc = await CosmWasmClient.connect(networkConfig.rpc)
+  const escrowQuery = new Cw20EscrowQueryClient(
+    cc,
+    cw20EscrowJson.networks[chainId]
+  )
+  const { ids } = await escrowQuery.list()
+  const paths = ids.map((id) => ({
+    params: {
+      escrowId: id,
+    },
+  }))
   return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  return { props: { metadata }, revalidate: 5 }
+  const networkConfig = config.networks[process.env.NETWORK]
+  const chainId = networkConfig.chainId as string
+  const artifactDirectory = path.join(process.cwd(), 'contracts')
+  const fileContent = await promises.readFile(
+    artifactDirectory + '/Cw20Escrow.json',
+    'utf8'
+  )
+  const cw20EscrowJson = JSON.parse(fileContent)
+  const cc = await CosmWasmClient.connect(networkConfig.rpc)
+  const escrowQuery = new Cw20EscrowQueryClient(
+    cc,
+    cw20EscrowJson.networks[chainId]
+  )
+  const id = params?.escrowId as string
+  const detailResponse = await escrowQuery.detail({ id })
+
+  return {
+    props: {
+      metadata: detailResponse,
+    },
+    revalidate: 5,
+  }
 }
 
 const EscrowDetail = ({
   metadata,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter()
-  console.log(router.query.escrowId)
-  if (metadata) {
+  if (metadata != undefined || metadata != null) {
     return <EscrowDetailComponent metadata={metadata} />
+  } else {
+    return <h1>{router.query.escrowId}</h1>
   }
 }
 

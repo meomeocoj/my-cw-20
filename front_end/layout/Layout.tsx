@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Header, Footer } from '../components'
+import { Header } from '../components'
 import Head from 'next/head'
 
 type Props = {
@@ -8,16 +8,13 @@ type Props = {
 }
 const Layout = ({ children, title = 'Escrow' }: Props) => {
   return (
-    <div className=''>
+    <div className={`flex flex-col gap-10`}>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
       </Head>
       <Header />
       <main>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
     </div>
   )
 }
