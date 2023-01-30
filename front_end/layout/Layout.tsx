@@ -8,17 +8,13 @@ type Props = {
 }
 const Layout = ({ children, title = 'Escrow' }: Props) => {
   return (
-    <div>
+    <div className={`flex flex-col gap-10`}>
       <Head>
         <title>{title}</title>
         <meta charSet='utf-8' />
       </Head>
       <Header />
-      <main>
-        <div className='container bg-neutral-content text-black rounded-md my-5 p-5'>
-          {children}
-        </div>
-      </main>
+      <main>{children}</main>
     </div>
   )
 }

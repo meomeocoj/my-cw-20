@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { EscrowDetail as EscrowDetailComponent } from '../../components'
+import { EscrowDetailComponent } from '../../components'
 import { config } from '../../cosmjs.config'
 import { CosmWasmClient } from '@cosmjs/cosmwasm-stargate'
 import { Cw20EscrowQueryClient } from '../../contracts/Cw20Escrow.client'
@@ -45,7 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     cw20EscrowJson.networks[chainId]
   )
   const id = params?.escrowId as string
-  console.log(id)
   const detailResponse = await escrowQuery.detail({ id })
 
   return {

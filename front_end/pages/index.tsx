@@ -8,15 +8,13 @@ import { config } from '../cosmjs.config'
 
 export default function Home({ ids }: { ids: string[] }) {
   return (
-    <>
-      <div className='flex justify-center'>
-        <div className='flex flex-col gap-6 md:flex-row md:flex-wrap'>
-          {ids.map((id) => (
-            <EscrowListItem key={id} id={id} />
-          ))}
-        </div>
+    <div className='container my-6 p-5 bg-neutral-content flex justify-center'>
+      <div className='flex flex-col gap-6 md:flex-row md:flex-wrap'>
+        {ids.map((id) => (
+          <EscrowListItem key={id} id={id} />
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 
