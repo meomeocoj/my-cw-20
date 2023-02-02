@@ -8,7 +8,7 @@ import { config } from '../cosmjs.config'
 
 export default function Home({ ids }: { ids: string[] }) {
   return (
-    <>
+    <div className='container bg-neutral-content text-black rounded-md my-5 p-5'>
       <div className='flex justify-center'>
         <div className='flex flex-col gap-6 md:flex-row md:flex-wrap'>
           {ids.map((id) => (
@@ -16,7 +16,7 @@ export default function Home({ ids }: { ids: string[] }) {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

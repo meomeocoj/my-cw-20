@@ -14,11 +14,7 @@ const Layout = ({ children, title = 'Escrow' }: Props) => {
         <meta charSet='utf-8' />
       </Head>
       <Header />
-      <main>
-        <div className='container bg-neutral-content text-black rounded-md my-5 p-5'>
-          {children}
-        </div>
-      </main>
+      <main>{children}</main>
     </div>
   )
 }
